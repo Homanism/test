@@ -26,21 +26,28 @@ class Problem {
         }
     } // end utfoer
 
-class Arbeider implements Runnable {
-// lokale data og metoder B
-int ind;
-void sync() {
-try{
-b.await();
-} catch (Exception e) { return;}
-}
-public Arbeider (int in) {ind = in;};
-public void run() {
-sync();
-System.out.println("A"+ind);
-sync();
-System.out.println("B"+ind);
-} // end run
-}
-// end indre klasse Arbeider
+    class Arbeider implements Runnable {
+        // lokale data og metoder B
+        int ind;
+
+        void sync() {
+            try {
+                b.await();
+            } catch (Exception e) {
+                return;
+            }
+        }
+
+        public Arbeider(int in) {
+            ind = in;
+        };
+
+        public void run() {
+            sync();
+            System.out.println("A" + ind);
+            sync();
+            System.out.println("B" + ind);
+        } // end run
+    }
+    // end indre klasse Arbeider
 } // end class Problem
