@@ -48,6 +48,5 @@ class Problem {
             sync();
             System.out.println("B" + ind);
         } // end run
-    }
-    // end indre klasse Arbeider
+    } // end indre klasse Arbeider
 } // end class Problem
