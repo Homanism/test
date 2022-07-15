@@ -1,4 +1,4 @@
-Question 3.1
+// Question 3.1
 import java.util. * ;
 ///--------------------------------------------------------
 //
@@ -66,8 +66,7 @@ public class TwinPrimePair {
       nextEP = sil.nextPrime(nextSP);
     };
     for (int i = 0; i < pairs.size(); i++) {
-      System.out.println(" " + i + ": [" + pairs.get(i)[0] + ",
-" + pairs.get(i)[1] + "]");
+      System.out.println(" " + i + ": [" + pairs.get(i)[0] + "," + pairs.get(i)[1] + "]");
     }
   }
   void setAllPrime() {

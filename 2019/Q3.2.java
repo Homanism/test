@@ -1,4 +1,4 @@
-Question 3.2
+// Question 3.2
 import java.util. * ;
 import java.util.concurrent. * ;
 import java.util.concurrent.locks. * ;
@@ -54,19 +54,16 @@ public class TwinPrimePairPara {
   public static void main(String args[]) {
     TwinPrimePairPara sil;
     if (args.length != 2) {
-      System.out.println("use: >java TwinPrimePairPara <Max>
-<threadCount>");
+      System.out.println("use: >java TwinPrimePairPara <Max><threadCount>");
       System.exit(0);
     }
     int num = Integer.parseInt(args[0]);
     int threadCount = Integer.parseInt(args[1]);
     if (! ((num >= 5) && (threadCount >= 2))) {
-      System.out.println("Bad parameters: Max must be at least 5 and
-threadCount at least 2");
+      System.out.println("Bad parameters: Max must be at least 5 and threadCount at least 2");
       System.exit(0);
     };
-    // Here we generate the sil sequentially as we assumme that you already
-    have a parallel
+    // Here we generate the sil sequentially as we assumme that you already have a parallel
     // version of the sil generation from Oblig 3
     long silTime = System.nanoTime();
     sil = new TwinPrimePairPara(num);
@@ -120,8 +117,7 @@ threadCount at least 2");
       if (i < lastThread) {
         uptoPrime = sil.nextPrime(from + chunkSize);
       } else uptoPrime = largestPrime;
-      // System.out.println("Starting thread "+i+" from "+fromPrime+" upto
-      "+uptoPrime);
+      // System.out.println("Starting thread "+i+" from "+fromPrime+" upto"+uptoPrime);
 new Thread(new Para(i, threadCount, sil, fromPrime, uptoPrime,
 pairLists.get(i))).start();
 from = from + chunkSize;
@@ -138,19 +134,13 @@ ArrayList<int[]> currentList;
 ArrayList<int[]> combinedList = new ArrayList<int[]>();
 for (int i = 0; i < threadCount; i++) {
 currentList = pairLists.get(i);
-// System.out.println("
-      pair List " + i + "
-      number of pairs: " +
-currentList.size());
+// System.out.println("pair List " + i + "number of pairs: " +currentList.size());
 for (int j = 0; j < currentList.size(); j++) {
 combinedList.add(currentList.get(j));
 }
 }
 paraTime = System.nanoTime() - paraTime;
-System.out.println("
-      Prime pair Parallel time " + (paraTime/1000000.0) +
-"
-      ms\nSpeedup "+ seqTime*1.0/paraTime);
+System.out.println("Prime pair Parallel time " + (paraTime/1000000.0) +"ms\nSpeedup "+ seqTime*1.0/paraTime);
 /*
 sil.printpairs(combinedList);
 for (int i = 0; i < threadCount; i++) {
