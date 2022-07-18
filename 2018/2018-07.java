@@ -2,12 +2,16 @@ import java.util.concurrent.*;
 
 class Problem {
     // felles data og metoder A
-    static int num = 3;
-    CyclicBarrier b = new CyclicBarrier(num);
+    static int num = 2;
+    static int extra = 2;
+    static CyclicBarrier b;
 
     public static void main(String[] args) {
         Problem p = new Problem();
-        p.utfoer(num + 1); // num+1 == 4
+        num = Integer.parseInt(args[0]);
+        extra = Integer.parseInt(args[1]);
+        b = new CyclicBarrier(num);
+        p.utfoer(num + extra); // extra threads
         System.out.println(" Main TERMINATED");
     } // end main
 
@@ -39,14 +43,6 @@ class Problem {
         };
 
         public void run() {
-            // kalles naar traaden er startet
-            if (ind == 1)
-                try {
-                    TimeUnit.SECONDS.sleep(2);
-                } catch (Exception e) {
-                    return;
-                }
-            ;
             sync();
             System.out.println("A" + ind);
             sync();
