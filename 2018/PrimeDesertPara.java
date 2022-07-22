@@ -52,7 +52,6 @@ public class PrimeDesertPara {
     setAllPrime();
     generatePrimesByEratosthenes();
   }
-
   public static void main(String args[]) {
     PrimeDesertPara sil;
     if (args.length != 2) {
